@@ -1,0 +1,83 @@
+:root {
+	--borderColor: rgba(255, 255, 255, 0.25);
+	--fontColor: #eee;
+	--fontfamily: 'Open Sans';
+}
+
+body {
+	background: #0c111b;
+}
+
+main {
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 75%;
+	user-select: none;
+}
+
+.container {
+	border-bottom: 1px solid var(--borderColor);
+}
+
+.info-bar {
+    height: 50px;
+    padding: 4px 10px 4px 10px;
+    background: linear-gradient(-90deg, rgba(0, 0, 0, 0.35), transparent);
+}
+
+.details-list {
+    display: flex;
+    justify-content: flex-end;
+    height: 100%;
+}
+
+.details-item {
+    font-family: var(--fontfamily), sans-serif;
+    color: var(--fontColor);
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 20px;
+	width: 400px;
+	position: relative;
+}
+
+.details-item canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+	z-index: 100;
+	opacity: 0.75;
+}
+
+.details-item .value {
+	z-index: 1000;
+	height: 25px;
+}
+
+.details-item a {
+	display: block;
+	font-size: 20px;
+    line-height: 22px;
+}
+
+.details-item label {
+	margin-right: 20px;
+	text-transform: uppercase;
+	opacity: 0.75;
+	font-size: 18px;
+	white-space: nowrap;
+}
+
+.alert_background {
+	border-top: 2px solid var(--borderColor);
+	border-bottom: 2px solid var(--borderColor);
+	background: rgba(0, 0, 0, 0.25);
+	animation: slideout .35s ease;
+	animation-fill-mode: both;
+	height: 70px;
+	min-width: 400px;
+	transform: translate(-50%, -50%);
+}
