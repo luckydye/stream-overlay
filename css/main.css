@@ -9,11 +9,11 @@ body {
 }
 
 main {
-	position: fixed;
-	top: 0;
-	right: 0;
-	left: 75%;
-	user-select: none;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    user-select: none;
 }
 
 .container {
@@ -23,7 +23,7 @@ main {
 .info-bar {
     height: 50px;
     padding: 4px 10px 4px 10px;
-    background: linear-gradient(-90deg, rgba(0, 0, 0, 0.35), transparent);
+    background: linear-gradient(-0deg, transparent, rgba(0, 0, 0, 0.35));
 }
 
 .details-list {
