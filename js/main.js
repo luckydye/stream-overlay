@@ -29,13 +29,8 @@ function initWebsocketApi(token) {
 	const infoBarActor = ActorManager.lookup("infobar");
 	const alertsActor = ActorManager.lookup("alerts");
 
-	setTimeout(() => {
-		test();
-	}, 2000);
-
 	const url = `https://sockets.streamlabs.com?token=${token}`;
 	io(url, { transports: ['websocket'] }).on('event', (eventData) => {
-		console.log(eventData);
 		if (eventData.type === 'donation') {
 			for(let msg of eventData.message) {
 				alertsActor.push({

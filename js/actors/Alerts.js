@@ -21,6 +21,10 @@ export class Alerts extends Actor {
 		}
 	}
 
+	get enabled() {
+		return false;
+	}
+
 	constructor() {
 		super("alerts");
 
@@ -63,7 +67,9 @@ export class Alerts extends Actor {
 
 	push(alert) {
 		this.queue.push(alert);
-		this.trigger();
+		if(this.enabled) {
+			this.trigger();
+		}
 	}
 
 	display(item) {
