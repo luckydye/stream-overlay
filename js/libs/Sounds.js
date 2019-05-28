@@ -4,6 +4,7 @@ export class Sounds {
 
 	static preload(id, url) {
 		const audio = new Audio();
+		audio.volume = 0.125;
 		audio.src = url;
 		soundStore.set(id, audio);
 	}
