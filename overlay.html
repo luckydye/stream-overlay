@@ -6,13 +6,19 @@
 
     <title>Stream Overlay</title>
     
+    <style>
+        [loading] {
+            opacity: 0;
+        }
+    </style>
+
     <link rel="stylesheet" href="./main.css">
     <script type="module" src="./components.js"></script>
     
     <link href="//static.luckydye.de/font-loader/open-sans.css" rel="stylesheet">
     <script src="libs/socket.io.js"></script>
 </head>
-<body>
+<body loading>
     <layout>
         <overlay-spotify></overlay-spotify>
         <overlay-follower></overlay-follower>

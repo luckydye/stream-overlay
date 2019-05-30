@@ -14,10 +14,6 @@ body {
     --streamlabs:none;
 }
 
-[loading] {
-    opacity: 0;
-}
-
 [dev] {
     background: url('/images/screenshot1.png');
     background-size: cover;
