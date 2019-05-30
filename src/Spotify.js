@@ -1,7 +1,9 @@
 const client_id = "cbc6f8fab7064000ba3fae1fd9e43996";
-const redirect_uri = location.origin + "/authorized.html";
 
-let access_token = null;
+const path = location.pathname.split("/");
+const redirect_uri = location.origin + path.slice(0, path.length-1) + "/authorized.html";
+
+let access_token = null, win = null;
 
 function parseSearchParams(string) {
     const params = {};
@@ -20,10 +22,14 @@ export class Spotify {
     static get authorized() {
         return access_token !== null;
     }
+
+    static get authorizing() {
+        return win !== null;
+    }
     
     static async authorize() {
         const authorize_service = `https://accounts.spotify.com/authorize?client_id=${client_id}&response_type=token&redirect_uri=${redirect_uri}&scope=user-read-currently-playing`;
-        const win = window.open(authorize_service);
+        win = window.open(authorize_service);
 
         return new Promise((resolve) => {
             const interval = setInterval(() => {

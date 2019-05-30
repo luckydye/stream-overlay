@@ -33,16 +33,18 @@ export class SpotifyOverlay extends OverlayElement {
 
     connectedCallback() {
         this.updateSpotify();
-        setInterval(() => this.updateSpotify(), 1000 * 4);
+        setInterval(() => this.updateSpotify(), 1000 * 8);
     }
     
     async updateSpotify() {
-        if(!Spotify.authorized) {
+        if(!Spotify.authorized && !Spotify.authorizing) {
             await Spotify.authorize();
         }
-        const songData = await Spotify.getPlayingSong();
-        if(songData) {
-            this.setState(songData);
+        if(!Spotify.authorizing) {
+            const songData = await Spotify.getPlayingSong();
+            if(songData) {
+                this.setState(songData);
+            }
         }
     }
 
