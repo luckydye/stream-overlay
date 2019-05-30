@@ -32,7 +32,6 @@ export class Streamlabs {
                 this.socket = io(service, { transports: ['websocket'] });
     
                 this.socket.on('event', (event) => {
-
                     const events = ['raid', 'follow', 'donation', 'host'];
 
                     if(events.includes(event.type)) {
