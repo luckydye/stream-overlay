@@ -7,10 +7,6 @@
     100% { opacity: 1 }
 }
 
-@keyframes slide-in {
-    from { transform: translateX(-100%) }
-}
-
 @keyframes scaling {
     0% { transform: scale(1, 1) }
     33% { transform: scale(1, 1.5) }
@@ -25,7 +21,6 @@ component {
     grid-gap: 15px;
     grid-template-columns: auto 1fr;
     background: linear-gradient(90deg, rgba(0, 0, 0, 0.5), transparent);
-    animation: slide-in .25s ease-out;
     border-radius: 5px;
     position: relative;
 }
@@ -101,6 +96,8 @@ component {
     margin: 8px 0;
     font-size: 18px;
     font-weight: 600;
+    max-height: 40px;
+    overflow: hidden;
 }
 
 .artists {

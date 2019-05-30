@@ -1,4 +1,4 @@
-import { Config } from './CustomConfig.js';
+import { Config } from './Config.js';
 
 export class Streamlabs {
 
@@ -26,7 +26,7 @@ export class Streamlabs {
     static async connect() {
         return new Promise(async (resolve, reject) => {
             if(!this.socket) {
-                const access_token = await Config.get('streamlabs');
+                const access_token = Config.get('streamlabs');
                 const service = `https://sockets.streamlabs.com?token=${access_token}`;
 
                 this.socket = io(service, { transports: ['websocket'] });

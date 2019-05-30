@@ -1,3 +1,5 @@
+import { Loader } from './Loader.js';
+
 export class OverlayElement extends HTMLElement {
 
     static template(props) {
@@ -5,10 +7,7 @@ export class OverlayElement extends HTMLElement {
     }
 
     loadStyles() {
-        const style = document.createElement('link');
-        style.rel = "stylesheet";
-        style.href = './components/' + this.constructor.name + ".css";
-        this.shadowRoot.appendChild(style);
+        Loader.loadStyles('./components/' + this.constructor.name, this.shadowRoot);
     }
 
     get attributes() {

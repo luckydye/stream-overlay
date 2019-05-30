@@ -7,27 +7,20 @@ body {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    /* background: url('/images/screenshot.png');
+    opacity: 1;
+    transition: opacity .25s ease;
+    
+    --layout:default;
+    --streamlabs:none;
+}
+
+[loading] {
+    opacity: 0;
+}
+
+[dev] {
+    background: url('/images/screenshot1.png');
     background-size: cover;
-    background-position: center; */
-
-    /* --streamlabs:eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiI6IjgwODRFREY3Nzg3QjZGNDQ5RUE5IiwicmVhZF9vbmx5Ijp0cnVlLCJwcmV2ZW50X21hc3RlciI6dHJ1ZSwidHdpdGNoX2lkIjoiNDc3MzY4NTUifQ.nBEXqbHCSRa1mijAC0uxxKoza2MR-3rzCnabZAcbOVE; */
-}
-
-main {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-overlay-spotify {
-    justify-self: left;
-}
-
-overlay-follower {
-    justify-self: center;
+    background-position: left top;
+    zoom: 0.6;
 }

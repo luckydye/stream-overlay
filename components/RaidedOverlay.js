@@ -16,7 +16,6 @@ export class RaidedOverlay extends QueuedOverlayElement {
     connectedCallback() {
         Streamlabs.connect();
         Streamlabs.on('raid', message => {
-            message.name += Math.floor(Math.random() * 100);
             this.push({ type: "raid", data: message });
         })
     }
