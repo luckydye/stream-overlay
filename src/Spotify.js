@@ -3,7 +3,7 @@ const client_id = "cbc6f8fab7064000ba3fae1fd9e43996";
 const path = location.pathname.split("/");
 const redirect_uri = [location.origin, ...path.slice(0, path.length-1).filter(part => part), "authorized.html"].join("/");
 
-let access_token = null, win = null;
+let access_token = null, authorize_service = null;
 
 function parseSearchParams(string) {
     const params = {};
@@ -24,12 +24,13 @@ export class Spotify {
     }
 
     static get authorizing() {
-        return win !== null || !this.authorized;
+        return !this.authorized && authorize_service != null;
     }
     
     static async authorize() {
-        const authorize_service = `https://accounts.spotify.com/authorize?client_id=${client_id}&response_type=token&redirect_uri=${redirect_uri}&scope=user-read-currently-playing`;
-        win = window.open(authorize_service);
+        authorize_service = `https://accounts.spotify.com/authorize?client_id=${client_id}&response_type=token&redirect_uri=${redirect_uri}&scope=user-read-currently-playing`;
+        const win = window.open(authorize_service);
+        console.log(win);
 
         return new Promise((resolve) => {
             const interval = setInterval(() => {
