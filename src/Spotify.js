@@ -37,12 +37,12 @@ export class Spotify {
         return new Promise((resolve) => {
             const interval = setInterval(() => {
                 if(location.hash) {
-                        const params = parseSearchParams(location.hash);
-                        if(params.access_token) {
-                            clearInterval(interval);
-                            access_token = params.access_token;
-                            resolve(params.access_token);
-                        }
+                    const params = parseSearchParams(location.hash);
+                    if(params.access_token) {
+                        clearInterval(interval);
+                        access_token = params.access_token;
+                        resolve(params.access_token);
+                    }
                 }
             }, 100);
         })

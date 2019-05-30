@@ -33,8 +33,15 @@ export class SpotifyOverlay extends OverlayElement {
 
     connectedCallback() {
         this.updateSpotify();
-        setInterval(() => this.updateSpotify(), 1000 * 8);
+        setInterval(() => this.updateSpotify(), 1000 * 5);
     }
+
+    get prograss() {
+        if(this.state.item && this.state.progress_ms) {
+            return (this.state.item.duration_ms - this.state.progress_ms);
+        }
+        return 0;
+    } 
     
     async updateSpotify() {
         if(!Spotify.authorized && !Spotify.authorizing) {
@@ -42,8 +49,16 @@ export class SpotifyOverlay extends OverlayElement {
         }
         if(!Spotify.authorizing) {
             const songData = await Spotify.getPlayingSong();
-            if(songData) {
+            if(songData.timestamp != this.state.timestamp) {
                 this.setState(songData);
+
+                if(this.prograss) {
+                    clearTimeout(this.nextSong);
+                    this.nextSong = setTimeout(() => {
+                        this.updateSpotify();
+                        console.log('next song');
+                    }, this.prograss + 100);
+                }
             }
         }
     }

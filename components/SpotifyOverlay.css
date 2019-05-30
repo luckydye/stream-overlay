@@ -25,6 +25,7 @@ component {
     grid-template-columns: auto 1fr;
     background: linear-gradient(90deg, rgba(0, 0, 0, 0.5), transparent);
     animation: slide-in .25s ease-out;
+    border-radius: 5px;
 }
 
 .playing-icon {
@@ -42,6 +43,14 @@ component {
 .playing-icon[playing="true"] span {
     opacity: 1;
     animation: scaling 1.15s ease infinite;
+}
+
+.playing-icon[playing="false"] span:nth-child(2),
+.playing-icon[playing="false"] span:nth-child(3) {
+    width: 6px;
+    border-radius: 0;
+    opacity: 1;
+    transform: scale(1, 1.75);
 }
 
 .playing-icon span {
