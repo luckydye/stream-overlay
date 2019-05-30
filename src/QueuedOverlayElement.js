@@ -32,8 +32,8 @@ export class QueuedOverlayElement extends OverlayElement {
     nextIfDone() {
         const nextEvent = this.state.queue[0];
         if(nextEvent) {
-            const delta = Date.now() - nextEvent.timestamp;
-            if(delta > this.displayTime) {
+            const age = this.state.current ? Date.now() - this.state.current.timestamp : 0;
+            if(!this.state.current || age >= this.displayTime) {
                 this.next();
             }
         }
@@ -42,6 +42,7 @@ export class QueuedOverlayElement extends OverlayElement {
     next() {
         const item = this.state.queue.pop();
         this.state.current = item;
+        this.state.current.timestamp = Date.now();
         this.setState(this.state);
     }
 }

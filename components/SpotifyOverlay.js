@@ -21,12 +21,22 @@ export class SpotifyOverlay extends OverlayElement {
                         <span></span>
                         <span></span>
                     </div>
-                    <img src="${coverUrl}" />
+                    <img width="75px" src="${coverUrl}" />
                 </div>
                 <div class="details">
                     <div class="title">${song.name}</div>
                     <div class="artists">${artists}</div>
                 </div>
+                <svg viewBox="0 0 350 100">
+                    <defs>
+                        <clipPath id="clip-Web_1920_1">
+                            <rect width="350" height="100"/>
+                        </clipPath>
+                    </defs>
+                    <g id="Web_1920_1" data-name="Web 1920 – 1" clip-path="url(#clip-Web_1920_1)">
+                        <path id="Path_1" data-name="Path 1" d="M19.556,105.115H306.921l58.466-58.466" transform="translate(-19.556 -9.535)" fill="none" stroke="#fff" stroke-width="1"/>
+                    </g>
+                </svg>
             `;
         }
     }

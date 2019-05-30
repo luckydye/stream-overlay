@@ -9,7 +9,6 @@ export class FollowerOverlay extends QueuedOverlayElement {
             return `
                 <a class="prefix">last follower</a>
                 <a class="name">${name}</a>
-                ${props.queue.length ? '<span class="loading"></span>' : ''}
             `;
         }
     }

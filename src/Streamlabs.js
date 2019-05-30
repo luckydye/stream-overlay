@@ -32,8 +32,13 @@ export class Streamlabs {
                 this.socket = io(service, { transports: ['websocket'] });
     
                 this.socket.on('event', (event) => {
-                    for(let message of event.message) {
-                        this.emit(event.type, message);
+
+                    const events = ['raid', 'follow', 'donation', 'host'];
+
+                    if(events.includes(event.type)) {
+                        for(let message of event.message) {
+                            this.emit(event.type, message);
+                        }
                     }
                 });
 

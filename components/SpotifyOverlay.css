@@ -20,12 +20,14 @@
 component {
     margin: 15px;
     min-width: 240px;
+    min-height: 75px;
     display: inline-grid;
     grid-gap: 15px;
     grid-template-columns: auto 1fr;
     background: linear-gradient(90deg, rgba(0, 0, 0, 0.5), transparent);
     animation: slide-in .25s ease-out;
     border-radius: 5px;
+    position: relative;
 }
 
 .playing-icon {
@@ -96,7 +98,7 @@ component {
 }
 
 .title {
-    margin: 8px 0 10px 0;
+    margin: 8px 0;
     font-size: 18px;
     font-weight: 600;
 }
@@ -109,4 +111,13 @@ component {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+}
+
+svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+    min-height: 90px;
+    width: 330px;
 }
