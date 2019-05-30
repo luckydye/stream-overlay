@@ -1,6 +1,4 @@
-const access_token = location.search.substr(1);
-
-// mine "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbiI6IjgwODRFREY3Nzg3QjZGNDQ5RUE5IiwicmVhZF9vbmx5Ijp0cnVlLCJwcmV2ZW50X21hc3RlciI6dHJ1ZSwidHdpdGNoX2lkIjoiNDc3MzY4NTUifQ.nBEXqbHCSRa1mijAC0uxxKoza2MR-3rzCnabZAcbOVE"
+import { Config } from './CustomConfig.js';
 
 export class Streamlabs {
 
@@ -26,8 +24,9 @@ export class Streamlabs {
     }
 
     static async connect() {
-        return new Promise((resolve, reject) => {
+        return new Promise(async (resolve, reject) => {
             if(!this.socket) {
+                const access_token = await Config.get('streamlabs');
                 const service = `https://sockets.streamlabs.com?token=${access_token}`;
 
                 this.socket = io(service, { transports: ['websocket'] });
