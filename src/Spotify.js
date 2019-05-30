@@ -24,7 +24,7 @@ export class Spotify {
     }
 
     static get authorizing() {
-        return win !== null;
+        return win !== null || !this.authorized;
     }
     
     static async authorize() {
