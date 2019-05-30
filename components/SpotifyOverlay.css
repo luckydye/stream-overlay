@@ -83,6 +83,7 @@ component {
 .details {
     max-width: 210px;
     overflow: hidden;
+    color: white;
 }
 
 .title {
