@@ -14,6 +14,7 @@ export class Loader {
         return Promise.all(promiseArray).then(() => {
             console.log("components loaded");
             document.body.removeAttribute('loading');
+            window.dispatchEvent(new Event('components.loaded'));
         })
     }
 

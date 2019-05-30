@@ -27,6 +27,8 @@ export class Streamlabs {
         return new Promise(async (resolve, reject) => {
             if(!this.socket) {
                 const access_token = Config.get('streamlabs');
+                console.log(access_token);
+                
                 const service = `https://sockets.streamlabs.com?token=${access_token}`;
 
                 this.socket = io(service, { transports: ['websocket'] });
