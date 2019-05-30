@@ -29,13 +29,15 @@ export class Spotify {
     
     static async authorize() {
         authorize_service = `https://accounts.spotify.com/authorize?client_id=${client_id}&response_type=token&redirect_uri=${redirect_uri}&scope=user-read-currently-playing`;
-        const win = window.open(authorize_service);
-        console.log(win);
+
+        if(!location.hash) {
+            window.location = authorize_service;
+        }
 
         return new Promise((resolve) => {
             const interval = setInterval(() => {
-                if(win.closed) {
-                        const params = parseSearchParams(win.location.hash);
+                if(location.hash) {
+                        const params = parseSearchParams(location.hash);
                         if(params.access_token) {
                             clearInterval(interval);
                             access_token = params.access_token;
