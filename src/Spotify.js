@@ -1,7 +1,7 @@
 const client_id = "cbc6f8fab7064000ba3fae1fd9e43996";
 
 const path = location.pathname.split("/");
-const redirect_uri = location.origin + path.slice(0, path.length-1) + "/authorized.html";
+const redirect_uri = location.origin + "/" + path.slice(0, path.length-1) + "/authorized.html";
 
 let access_token = null, win = null;
 
