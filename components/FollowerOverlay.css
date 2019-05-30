@@ -1,0 +1,40 @@
+:host {
+    display: block;
+}
+
+component {
+    display: inline-block;
+    padding: 15px 40px;
+    background: linear-gradient(-180deg, rgba(0, 0, 0, 0.33), transparent);
+    border-bottom: 1px solid rgba(238, 238, 238, 0.33);
+    overflow: hidden;
+    position: relative;
+}
+
+@keyframes timeout {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+.loading {
+    animation: timeout 5s linear;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 2px;
+    background: red;
+    display: block;
+}
+
+.prefix {
+    text-transform: uppercase;
+    margin-right: 15px;
+    color: #c3c3c3;
+    font-size: 18px;
+    font-weight: 100;
+}
+
+.name {
+    font-weight: 500;
+    font-size: 20px;
+}
