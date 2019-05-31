@@ -13,12 +13,10 @@ export class FollowerOverlay extends QueuedOverlayElement {
         }
     }
 
-    connectedCallback() {
-        window.addEventListener('components.loaded', () => {
-            Streamlabs.connect();
-            Streamlabs.on('follow', message => {
-                this.push({ type: "follow", data: message });
-            })
+    loadedCallback() {
+        Streamlabs.connect();
+        Streamlabs.on('follow', message => {
+            this.push({ type: "follow", data: message });
         })
     }
 

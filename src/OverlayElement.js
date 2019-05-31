@@ -31,6 +31,14 @@ export class OverlayElement extends HTMLElement {
 
         this.applyAttributes();
         this.load();
+
+        Loader.load().then(() => {
+            this.loadedCallback();
+        });
+    }
+
+    loadedCallback() {
+        
     }
 
     applyAttributes() {

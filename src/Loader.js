@@ -1,3 +1,5 @@
+let loaded = false;
+
 export class Loader {
 
     static loadStyles(path, root) {
@@ -14,7 +16,18 @@ export class Loader {
         return Promise.all(promiseArray).then(() => {
             console.log("components loaded");
             document.body.removeAttribute('loading');
-            window.dispatchEvent(new Event('components.loaded'));
+            window.dispatchEvent(new Event('loader.loaded'));
+        })
+    }
+
+    static async load() {
+        if(loaded) return;
+
+        return new Promise((resolve) => {
+            window.addEventListener('loader.loaded', () => {
+                loaded = true;
+                resolve();
+            });
         })
     }
 

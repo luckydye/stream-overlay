@@ -13,12 +13,10 @@ export class RaidedOverlay extends QueuedOverlayElement {
         }
     }
 
-    connectedCallback() {
-        window.addEventListener('components.loaded', () => {
-            Streamlabs.connect();
-            Streamlabs.on('raid', message => {
-                this.push({ type: "raid", data: message });
-            })
+    loadedCallback() {
+        Streamlabs.connect();
+        Streamlabs.on('raid', message => {
+            this.push({ type: "raid", data: message });
         })
     }
 
