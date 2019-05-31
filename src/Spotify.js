@@ -3,7 +3,10 @@ const client_id = "cbc6f8fab7064000ba3fae1fd9e43996";
 const path = location.pathname.split("/");
 const redirect_uri = [location.origin, ...path.slice(0, path.length-1).filter(part => part), "authorized.html"].join("/");
 
-let access_token = null, authorize_service = null;
+let access_token = null, 
+    authorize_service = null,
+    authorized_timestamp = 0,
+    expires = 0;
 
 function parseSearchParams(string) {
     const params = {};
@@ -18,6 +21,10 @@ function parseSearchParams(string) {
 }
 
 export class Spotify {
+
+    static get expired() {
+        return Date.now() - authorized_timestamp > expires;
+    }
 
     static get authorized() {
         return access_token !== null;
@@ -38,6 +45,10 @@ export class Spotify {
             const interval = setInterval(() => {
                 if(location.hash) {
                     const params = parseSearchParams(location.hash);
+                    
+                    authorized_timestamp = Date.now();
+                    expires = parseInt(params.expires_in * 1000);
+                    
                     if(params.access_token) {
                         clearInterval(interval);
                         access_token = params.access_token;
@@ -56,6 +67,11 @@ export class Spotify {
         if(!access_token) {
             throw "Not yet authorized";
         }
+        if(this.expired) {
+            console.log('reauthorized pls');
+            await this.authorize();
+            console.log('thx');
+        }
         const service = "https://api.spotify.com/v1" + endpoint + query;
         const res = await fetch(service, {
             method: "GET",
@@ -63,7 +79,8 @@ export class Spotify {
                 'Authorization': `Bearer ${access_token}`,
             }
         }).catch(async err => console.error(err));
-        return await res.json();
+        const result = await res.json();
+        return result;
     }
 
     static async getPlayingSong() {

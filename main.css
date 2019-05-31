@@ -15,7 +15,7 @@ body {
 }
 
 [dev] {
-    background: url('/images/screenshot1.png');
+    background: url('/images/screenshot.png');
     background-size: cover;
     background-position: left top;
     zoom: 0.6;
