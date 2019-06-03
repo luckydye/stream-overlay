@@ -5,7 +5,7 @@ async function getCustomCSS(nodeElement) {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve(window.getComputedStyle(nodeElement || document.body));
-        }, 250);
+        }, 500);
     })
 }
 
