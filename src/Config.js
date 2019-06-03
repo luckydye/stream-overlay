@@ -18,6 +18,8 @@ export class Config {
     static get(key) {
         if(config.has(key)) {
             return config.get(key);
+        } else if(localStorage.getItem(key)) {
+            return localStorage.getItem(key);
         } else if(stylesConfig) {
             return stylesConfig.getPropertyValue('--' + key);
         }

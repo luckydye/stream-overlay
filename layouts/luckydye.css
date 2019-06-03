@@ -20,12 +20,12 @@ layout {
 
 :not([loading]) overlay-spotify {
     justify-self: left;
-    animation: slide-in .25s ease-out;
+    animation: slide-in .25s ease;
 }
 
 :not([loading]) overlay-raid,
 :not([loading]) overlay-follower {
-    animation: slide-in-top .25s ease-out;
+    animation: slide-in-top .33s ease;
 }
 
 overlay-spotify {
