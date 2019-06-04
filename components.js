@@ -15,6 +15,10 @@ if(devEnabled == "true") {
     console.log('using streamlabs key:', streamlabs);
 }
 
+window.addEventListener('click', () => {
+    Config.set('layout', 'luckydye');
+})
+
 Loader.loadComponents([
     Config.load().then(() => {
         Config.set('layout', Config.get('layout'));

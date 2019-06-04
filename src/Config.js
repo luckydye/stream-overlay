@@ -27,6 +27,7 @@ export class Config {
 
     static set(key, value) {
         config.set(key, value);
+        localStorage.setItem(key, value);
     }
 
 }
