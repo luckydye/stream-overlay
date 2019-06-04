@@ -16,7 +16,7 @@ if(devEnabled == "true") {
 }
 
 window.addEventListener('click', () => {
-    Config.set('layout', 'luckydye');
+    Config.set('layout', Config.get('layout') == 'luckydye' ? 'default' : 'luckydye');
 })
 
 Loader.loadComponents([
