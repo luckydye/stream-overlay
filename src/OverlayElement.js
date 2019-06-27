@@ -22,12 +22,10 @@ export class OverlayElement extends HTMLElement {
         this.attachShadow({ mode: "open" });
         this.loadStyles();
         
-        const comp = document.createElement('component');
-        comp.className = this.constructor.name.toLocaleLowerCase();
-        comp.setAttribute('type', this.constructor.name);
-        this.root = comp;
-
+        this.root = document.createElement('component');
         this.shadowRoot.appendChild(this.root);
+
+        this.setAttribute('type', this.constructor.name);
 
         this.applyAttributes();
         this.load();

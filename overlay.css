@@ -10,7 +10,6 @@ body {
     opacity: 1;
     transition: opacity .25s ease;
     
-    --layout:default;
     --streamlabs:none;
 }
 
@@ -19,4 +18,23 @@ body {
     background-size: cover;
     background-position: left top;
     zoom: 0.6;
+}
+
+layout {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: flex-end;
+}
+
+@keyframes slide-in {
+    from { transform: translateX(-100%) }
+}
+
+overlay-spotify[playing="true"] {
+    animation: slide-in .25s ease-out;
 }

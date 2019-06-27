@@ -10,10 +10,5 @@ if(localStorage.getItem('dev') == "true") {
 }
 
 Loader.loadComponents([
-    Config.load().then(() => {
-        Config.set('layout', Config.get('layout'));
-        const layout = Config.get('layout');
-        console.log("using layout:", layout);
-        return Loader.loadStyles('./layouts/' + layout);
-    }),
+    Config.load(),
 ])

@@ -2,17 +2,6 @@
     display: block;
 }
 
-@keyframes fade-in {
-    0% { opacity: 0.15 }
-    100% { opacity: 1 }
-}
-
-@keyframes scaling {
-    0% { transform: scale(1, 1) }
-    33% { transform: scale(1, 1.5) }
-    100% { transform: scale(1, 1) }
-}
-
 component {
     margin: 15px;
     min-width: 240px;
@@ -23,6 +12,23 @@ component {
     background: linear-gradient(90deg, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.125));
     border-radius: 5px;
     position: relative;
+    opacity: 1;
+    transition: opacity .25s ease;
+}
+
+:host([playing="false"]) component {
+    opacity: 0; 
+}
+
+@keyframes scaling {
+    0% { transform: scale(1, 1) }
+    33% { transform: scale(1, 1.5) }
+    100% { transform: scale(1, 1) }
+}
+
+:host([playing="true"]) .playing-icon span {
+    opacity: 1;
+    animation: scaling 1s ease infinite;
 }
 
 .playing-icon {
@@ -37,19 +43,6 @@ component {
     background: radial-gradient(rgba(0, 0, 0, 0.15), transparent);
 }
 
-.playing-icon[playing="true"] span {
-    opacity: 1;
-    animation: scaling 1.15s ease infinite;
-}
-
-.playing-icon[playing="false"] span:nth-child(2),
-.playing-icon[playing="false"] span:nth-child(3) {
-    width: 6px;
-    border-radius: 0;
-    opacity: 1;
-    transform: scale(1, 1.75);
-}
-
 .playing-icon span {
     opacity: 0;
     width: 4px;
@@ -60,20 +53,25 @@ component {
 }
 
 .playing-icon span:nth-child(1) {
-    animation-delay: .85s;
+    animation-delay: .85s !important;
 }
 
 .playing-icon span:nth-child(2) {
-    animation-delay: .125s;
+    animation-delay: .125s !important;
 }
 
 .playing-icon span:nth-child(3) {
-    animation-delay: .33s;
+    animation-delay: .33s !important;
 }
 
 .cover img {
     width: 75px;
     display: block;
+}
+
+@keyframes fade-in {
+    0% { opacity: 0.15 }
+    100% { opacity: 1 }
 }
 
 .cover {
@@ -87,13 +85,14 @@ component {
 }
 
 .details {
-    max-width: 210px;
+    padding: 0 20px 0 0;
     overflow: hidden;
     color: white;
 }
 
 .title {
-    margin: 8px 0;
+    line-height: 1.2;
+    margin: 6px 0;
     font-size: 18px;
     font-weight: 600;
     max-height: 40px;
@@ -108,13 +107,4 @@ component {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-}
-
-svg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0.5;
-    min-height: 90px;
-    width: 330px;
 }

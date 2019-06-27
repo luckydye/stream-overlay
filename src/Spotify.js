@@ -78,13 +78,14 @@ export class Spotify {
             headers: {
                 'Authorization': `Bearer ${access_token}`,
             }
-        }).catch(async err => console.error(err));
+        }).catch(err => console.error(err));
         const result = await res.json();
         return result;
     }
 
     static async getPlayingSong() {
-        return await this.query('/me/player/currently-playing', { market: "de" }).catch(err => err);
+        return await this.query('/me/player/currently-playing', { market: "de" })
+            .catch(err => null);
     }
 
 }
