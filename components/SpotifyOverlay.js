@@ -43,7 +43,7 @@ export class SpotifyOverlay extends OverlayElement {
 
     connectedCallback() {
         this.updateSpotify();
-        setInterval(() => this.updateSpotify(), 1000 * 5);
+        setInterval(() => this.updateSpotify(), 1000);
     }
 
     get prograss() {
