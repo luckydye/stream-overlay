@@ -23,6 +23,7 @@ export class SpotifyOverlay extends OverlayElement {
 
     connectedCallback() {
         this.update();
+        this.setAttribute('playing', false);
         setInterval(() => this.update(), 1200);
     }
 
