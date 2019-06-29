@@ -1,6 +1,8 @@
 let stylesConfig = null;
 let config = new Map();
 
+window.exports = {};
+
 async function getCustomCSS(nodeElement) {
     return new Promise((resolve) => {
         setTimeout(() => {

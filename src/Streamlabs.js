@@ -1,4 +1,16 @@
-import { Config } from './Config.js';
+import '../node_modules/socket.io-client/dist/socket.io.js';
+
+function parseSearchParams(string) {
+    const params = {};
+    const arr = string.split(/[\#|\?\&]/g);
+    for(let item of arr) {
+        const pair = item.split("=");
+        if(pair[0]) {
+            params[pair[0]] = pair[1];
+        }
+    }
+    return params;
+}
 
 export class Streamlabs {
 
@@ -26,7 +38,7 @@ export class Streamlabs {
     static async connect() {
         return new Promise(async (resolve, reject) => {
             if(!this.socket) {
-                const access_token = Config.get('streamlabs');
+                const access_token = parseSearchParams(location.search).streamlabs;
                 const service = `https://sockets.streamlabs.com?token=${access_token}`;
 
                 this.socket = io(service, { transports: ['websocket'] });
