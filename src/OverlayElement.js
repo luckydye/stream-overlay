@@ -7,7 +7,7 @@ export class OverlayElement extends HTMLElement {
     }
 
     loadStyles() {
-        Loader.loadStyles('./components/' + this.constructor.name, this.shadowRoot);
+        Loader.loadStyles('../components/' + this.constructor.name, this.shadowRoot);
     }
 
     get attributes() {

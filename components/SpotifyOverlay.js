@@ -40,7 +40,7 @@ export class SpotifyOverlay extends OverlayElement {
 
             const songData = await Spotify.getPlayingSong();
 
-            if(songData && songData.timestamp != this.state.timestamp) {
+            if(songData && songData.item && songData.timestamp != this.state.timestamp) {
                 this.setState({
                     playing: songData.is_playing,
                     cover: songData.item.album.images[1].url,

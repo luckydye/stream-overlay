@@ -13,13 +13,6 @@ body {
     --streamlabs:none;
 }
 
-[dev] {
-    background: url('/images/screenshot1.png');
-    background-size: cover;
-    background-position: left top;
-    zoom: 0.6;
-}
-
 layout {
     position: absolute;
     top: 0;

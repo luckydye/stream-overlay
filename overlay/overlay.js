@@ -1,5 +1,5 @@
-import { Config } from './src/Config.js';
-import { Loader } from './src/Loader.js';
+import { Config } from '../src/Config.js';
+import { Loader } from '../src/Loader.js';
 
 if(localStorage.getItem('dev') == "true") {
     const streamlabs = localStorage.getItem('streamlabs');

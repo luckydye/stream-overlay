@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stream Overlay</title>
+    
+    <style>
+        [loading] {
+            opacity: 0;
+        }
+        
+        overlay-command {
+            position: absolute;
+            top: 0;
+            right: 40px;
+        }
+    </style>
+
+    <link rel="stylesheet" href="./overlay.css">
+    <link href="//static.luckydye.de/font-loader/open-sans.css" rel="stylesheet">
+
+    <script src="../node_modules/socket.io-client/dist/socket.io.js"></script>
+    <script type="module" src="./overlay.js"></script>
+
+    <script type="module">
+        import '../components/CommandOverlay.js';
+    </script>
+</head>
+<body loading>
+    <layout>
+        <overlay-command command="!tft"></overlay-command>
+    </layout>
+</body>
+</html>

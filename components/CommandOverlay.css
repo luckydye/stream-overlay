@@ -17,6 +17,9 @@ component {
 component a {
     transform: skewX(40deg);
     display: inline-block;
+    font-size: 24px;
+    color: white;
+    line-height: 22px;
 }
 
 component::after {
@@ -29,39 +32,4 @@ component::after {
     top: -1px;
     opacity: 0.45;
     animation: loading 8s linear both infinite;
-}
-
-@keyframes loading {
-    0% {
-        width: 0;
-        left: 0;
-    }
-    50% {
-        width: 100%;
-        left: 0;
-    }
-    50.1% {
-        width: 100%;
-        right: 0;
-        left: auto;
-    }
-    100% {
-        width: 0%;
-        right: 0;
-        left: auto;
-    }
-}
-
-.prefix {
-    text-transform: uppercase;
-    margin-right: 15px;
-    color: rgba(238, 238, 238, 0.75);
-    font-size: 18px;
-    font-weight: 100;
-}
-
-.name {
-    color: white;
-    font-weight: 500;
-    font-size: 20px;
 }
