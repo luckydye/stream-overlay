@@ -1,5 +1,3 @@
-import '../node_modules/socket.io-client/dist/socket.io.js';
-
 function parseSearchParams(string) {
     const params = {};
     const arr = string.split(/[\#|\?\&]/g);
