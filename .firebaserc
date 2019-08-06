@@ -1,5 +1,11 @@
 {
   "projects": {
     "default": "stream-overlay-ffd2b"
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/geturl",
+      "destination": "/getoverlay.html"
+    }
+  ]
 }
