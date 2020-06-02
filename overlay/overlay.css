@@ -9,6 +9,7 @@ body {
     overflow: hidden;
     opacity: 1;
     transition: opacity .25s ease;
+    background: #1c1c1c;
     
     --streamlabs:none;
 }

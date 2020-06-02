@@ -17,13 +17,12 @@ export class AlertOverlay extends QueuedOverlayElement {
 
             if(effect) {
                 setTimeout(() => {
-
-                    canvas.style.animation = `fade-out 2s ease`;
-
                     canvas.onanimationend = () => {
                         effect.clear();
                         canvas.remove();
                     }
+
+                    canvas.style.animation = `fade-out 2s ease both`;
                 }, 1000 * 12);
 
                 instance.appendChild(canvas);
