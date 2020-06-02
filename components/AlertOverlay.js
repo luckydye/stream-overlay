@@ -1,6 +1,9 @@
 import { Streamlabs } from '../src/Streamlabs.js';
 import { QueuedOverlayElement } from '../src/QueuedOverlayElement.js';
 import { Effects } from './../src/Effects.js';
+import { Sounds } from './../src/Sounds.js';
+
+Sounds.preload('raidalert', '../sounds/raid.wav');
 
 export class AlertOverlay extends QueuedOverlayElement {
 
@@ -24,6 +27,8 @@ export class AlertOverlay extends QueuedOverlayElement {
 
                     canvas.style.animation = `fade-out 2s ease both`;
                 }, 1000 * 12);
+
+                Sounds.play('raidalert');
 
                 instance.appendChild(canvas);
             }
