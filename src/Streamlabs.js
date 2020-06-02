@@ -52,6 +52,7 @@ export class Streamlabs {
                 });
 
                 this.socket.on('connect', () => {
+                    console.log('connected');
                     resolve(this.connected);
                 });
 

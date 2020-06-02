@@ -57,7 +57,7 @@ export class OAuthClient {
                 return;
             }
 
-            auth_win = open(this.authorize_service, '', "width=500,height=500,top=200,left=400,location=no");
+            auth_win = open(this.authorize_service);
             auth_win.focus();
 
             const checkFinished = setInterval(() => {

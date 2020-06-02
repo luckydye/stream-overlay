@@ -53,7 +53,7 @@ export class OverlayElement extends HTMLElement {
     }
 
     render() {
-        const template = this.constructor.template(this.state);
+        const template = this.constructor.template(this.state, this);
 
         if(!template) {
             this.root.style.visibility = "hidden";
