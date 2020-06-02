@@ -13,7 +13,7 @@ export class AlertOverlay extends QueuedOverlayElement {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
 
-            const effect = Effects.particleText(`${name} is rading with ${raiders} viewers!`, 'hsla(0, 65%, 42%, 1)', ' ', canvas, 0, -120);
+            const effect = Effects.particleText(`${name} is rading with ${raiders} viewers!`, 'white', ' ', canvas, 0, -120);
 
             if(effect) {
                 setTimeout(() => {
