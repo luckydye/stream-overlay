@@ -1,3 +1,3 @@
 # Stream Overlays
 
-[Live Versions](https://luckydye.github.io/stream-overlay/)
+[Choose a Overlay here](https://luckydye.github.io/stream-overlay/)
