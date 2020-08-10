@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- title is used in the title of the dock -->
+    <title>Timer</title>
+
+    <!-- import fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style>
+        body {
+            background: rgba(0,0,0,0);
+            color: white;
+            font-family: sans-serif;
+            font-size: 22px;
+            overflow: hidden;
+            margin: 0;
+            user-select: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .timer-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+
+    <timer-dock overlay="timer"></timer-dock>
+
+    <obs-overlay overlay="timer" class="timer-overlay">
+        <style>
+            obs-overlay {
+                font-family: Roboto;
+                background: hsla(0, 0%, 5%, 0.9);
+            }
+            obs-overlay:not([time]) {
+                display: none;
+            }
+            obs-overlay[playing=false] {
+                background: hsla(0, 0%, 37%, 0.9);
+            }
+            obs-overlay[playing="false"][countdown="true"][time="0"] {
+                background: rgba(66, 131, 60, 0.9);
+            }
+            .title {
+                font-size: 40px;
+                font-weight: bold;
+                letter-spacing: 5px;
+                text-transform: uppercase;
+                line-height: 80%;
+                text-align: center;
+                margin: 10px 0;
+            }
+            .time {
+                margin: 10px 0;
+                font-size: 95px;
+                font-weight: 300;
+                width: 100%;
+                line-height: 80%;
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .time .spacer {
+                margin: 0 2px;
+                margin-top: -10px;
+            }
+            .clock {
+                position: relative;
+                text-align: center;
+                padding: 10px 20px;
+                display: flex;
+                flex-direction: column-reverse;
+            }
+        </style>
+        <div class="clock">
+            <div class="title" data-html="title"></div>
+            <div class="time">
+                <span data-html="hours"></span>
+                <span class="spacer">:</span>
+                <span data-html="minutes"></span>
+                <span class="spacer">:</span>
+                <span data-html="seconds"></span>
+            </div>
+        </div>
+    </obs-overlay>
+
+    <!-- define my custom dock -->
+    <script type="module" src="./timer.js"></script>
+</body>
+</html>

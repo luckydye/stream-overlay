@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Overlays</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300,500&display=swap" rel="stylesheet">
 
     <style>
 
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
+            background: #333;
+            color: #eee;
         }
 
         main {
@@ -27,20 +29,27 @@
         }
 
         .cta {
-            max-width: 1200px;
-            margin: 0 auto 20px auto;
+            margin: auto;
             height: 200px;
             display: flex;
             justify-content: center;
             align-items: center;
+            background: #1c1c1c;
         }
 
         .overlay-list {
             display: grid;
             grid-template-columns: auto auto;
-            grid-gap: 20px;
+            grid-gap: 40px;
             justify-content: center;
             align-items: center;
+            margin-top: 40px;
+        }
+
+        @media screen and (max-width: 1100px) {
+            .overlay-list {
+                grid-template-columns: auto;
+            }
         }
         
         .overlay-preview {
@@ -48,16 +57,30 @@
             overflow: hidden;
             border-radius: 4px;
             padding: 15px;
+            background: url('../transparency.svg');
+            position: relative;
+        }
+
+        .overlay-preview:after {
+            content: "";
+            position: absolute;
+            opacity: 0;
+            background: white;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transition: opacity .15s ease-out;
         }
         
         .overlay-title {
             margin-bottom: 15px;
+            font-weight: 500;
         }
 
         .overlay {}
 
         .overlay-link {
-            padding: 15px;
             display: block;
             font-size: 18px;
             text-decoration: none;
@@ -65,8 +88,15 @@
             cursor: grab;
         }
 
-        .overlay-link:hover .overlay-preview {
-            background: rgb(221, 221, 221);
+        .overlay-link:hover .overlay-preview:after {
+            opacity: 0.1;
+        }
+
+        .overlay-description {
+            margin: 15px 0;
+            font-size: 14px;
+            word-break: break-word;
+            max-width: 400px;
         }
 
     </style>
@@ -88,8 +118,25 @@
                     <div class="overlay-title">
                         Clock
                     </div>
+                    <div class="overlay-description">
+                        
+                    </div>
                     <div class="overlay-preview">
-                        <iframe width="400" height="100" src="./overlay/clock.html"></iframe>
+                        <iframe width="420" height="200" src="./overlay/clock.html"></iframe>
+                    </div>
+                </a>
+            </div>
+
+            <div class="overlay">
+                <a class="overlay-link" href="./overlay/timer.html?layer-name=Timer&layer-width=400&layer-height=100">
+                    <div class="overlay-title">
+                        Timer
+                    </div>
+                    <div class="overlay-description">
+                        Define a Custom Dock with the same URL as the overlay to control the timer.
+                    </div>
+                    <div class="overlay-preview">
+                        <iframe width="420" height="200" src="./overlay/timer.html#overlay"></iframe>
                     </div>
                 </a>
             </div>
@@ -97,6 +144,14 @@
         </div>
 
     </main>
+
+    <script>
+        // prevent link forwarding
+        window.addEventListener('click', e => {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+        });
+    </script>
 
 </body>
 </html>
