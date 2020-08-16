@@ -47,8 +47,6 @@ function connect() {
             console.log('EMOTE RAIN');
         }
     }
-    
-    rain();
 
     window.rain = () => rain();
 
